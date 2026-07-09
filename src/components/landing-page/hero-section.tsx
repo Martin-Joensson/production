@@ -5,6 +5,7 @@ import {
   EyeIcon,
   RocketIcon,
   SparkleIcon,
+  SparklesIcon,
   UsersIcon,
 } from "lucide-react";
 import Link from "next/link";
@@ -56,7 +57,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
             <Button asChild size="lg" className="text-base px-8 shadow-lg">
               <Link href="/submit" className="flex items-center gap-2">
-                <SparkleIcon className="size-5" />
+                <SparklesIcon className="size-5" />
                 Share Your Project
               </Link>
             </Button>

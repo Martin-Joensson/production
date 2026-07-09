@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins, Outfit } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/common/header";
+import Footer from "@/components/common/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,9 +37,9 @@ export default function RootLayout({
       className={`${poppins.variable} ${outfit.variable}  ${geistSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <header>Ibuiltthis</header>
+        <Header />
         {children}
-        <footer>Ibuilt this inc</footer>
+        <Footer />
       </body>
     </html>
   );

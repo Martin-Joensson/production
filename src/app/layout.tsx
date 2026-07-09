@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Poppins } from "next/font/google";
+import { Geist, Geist_Mono, Poppins, Outfit } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -7,8 +7,8 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -19,8 +19,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "iBuiltThis",
-  description: "A platform for building and sharing your projects",
+  title: "iBuiltThis - Share Your Creations, Discover New Launches",
+  description:
+    "A community platform for creators to showcase thair apps, AI tools, SaaS products, and creative projects. Authentic launches, real builders, genuine feedback.",
 };
 
 export default function RootLayout({
@@ -31,7 +32,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${poppins.variable} ${geistSans.variable} h-full antialiased`}
+      className={`${poppins.variable} ${outfit.variable}  ${geistSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <header>Ibuiltthis</header>

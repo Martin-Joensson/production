@@ -7,6 +7,14 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import {
+  Show,
+  SignIn,
+  SignInButton,
+  SignUp,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
 const Logo = () => {
   return (
@@ -22,7 +30,7 @@ const Logo = () => {
   );
 };
 export default function Header() {
-  const isSignedIn = true;
+  const isSignedIn = false;
   return (
     <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
       <div className="wrapper px-12">
@@ -47,27 +55,26 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            {isSignedIn ? (
-              <>
-                <Button asChild>
-                  <Link href="/submit" className="flex items-center gap-1 ">
-                    {" "}
-                    <SparklesIcon className="size-4" />
-                    Submit Project
-                  </Link>
-                </Button>
+            <Show when="signed-out">
+              <SignInButton />
+              <SignUpButton>
+                <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                  Sign Up
+                </button>
+              </SignUpButton>
+            </Show>
+            <Show when="signed-in">
+              <Button asChild>
+                <Link href="/submit" className="flex items-center gap-1 ">
+                  {" "}
+                  <SparklesIcon className="size-4" />
+                  Submit Project
+                </Link>
+              </Button>
 
-                {/* Clerk User */}
-                <Button variant="ghost">
-                  <UserIcon className="size-4" />
-                </Button>
-              </>
-            ) : (
-              <>
-                <Button variant="ghost">Sign In</Button>
-                <Button>Sign Up</Button>
-              </>
-            )}
+              {/* Clerk User */}
+                    <UserButton />
+            </Show>
           </div>
         </div>
       </div>

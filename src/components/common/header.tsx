@@ -1,6 +1,7 @@
 import {
   CompassIcon,
   HomeIcon,
+  LoaderIcon,
   SparkleIcon,
   SparklesIcon,
   UserIcon,
@@ -15,6 +16,7 @@ import {
   SignUpButton,
   UserButton,
 } from "@clerk/nextjs";
+import { Suspense } from "react";
 
 const Logo = () => {
   return (
@@ -55,26 +57,28 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Show when="signed-out">
-              <SignInButton />
-              <SignUpButton>
-                <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
-                  Sign Up
-                </button>
-              </SignUpButton>
-            </Show>
-            <Show when="signed-in">
-              <Button asChild>
-                <Link href="/submit" className="flex items-center gap-1 ">
-                  {" "}
-                  <SparklesIcon className="size-4" />
-                  Submit Project
-                </Link>
-              </Button>
+            <Suspense fallback={<LoaderIcon className="size-4 animate-spin" />}>
+              <Show when="signed-out">
+                <SignInButton />
+                <SignUpButton>
+                  <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
+                    Sign Up
+                  </button>
+                </SignUpButton>
+              </Show>
+              <Show when="signed-in">
+                <Button>
+                  <Link href="/submit" className="flex items-center gap-1 ">
+                    {" "}
+                    <SparklesIcon className="size-4" />
+                    Submit Project
+                  </Link>
+                </Button>
 
-              {/* Clerk User */}
-                    <UserButton />
-            </Show>
+                {/* Clerk User */}
+                <UserButton />
+              </Show>
+            </Suspense>
           </div>
         </div>
       </div>

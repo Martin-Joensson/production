@@ -1,6 +1,7 @@
 import FeaturedProducts from "@/components/landing-page/featured-products";
 import HeroSection from "@/components/landing-page/hero-section";
 import RecentlyLaunchedProducts from "@/components/landing-page/recently-launched-products";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -8,8 +9,9 @@ export default function Home() {
       <HeroSection />
 
       <FeaturedProducts />
-
-      <RecentlyLaunchedProducts />
+      <Suspense fallback={<div>Loading... Recently Lauched Products</div>}>
+        <RecentlyLaunchedProducts />
+      </Suspense>
     </div>
   );
 }

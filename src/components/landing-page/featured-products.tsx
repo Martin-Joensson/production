@@ -1,3 +1,5 @@
+"use cache";
+
 import { ArrowUpRightIcon, StarIcon } from "lucide-react";
 import SectionHeader from "../common/section-header";
 import { Button } from "../ui/button";
@@ -35,11 +37,7 @@ export default async function FeaturedProducts() {
             icon={StarIcon}
             description="Top picks from the community."
           />
-          <Button
-            variant="outline"
-            asChild
-            className="shadow-lg hidden sm:flex"
-          >
+          <Button variant="outline" className="shadow-lg hidden sm:flex">
             <Link href="/explore" className="flex items-center">
               View All <ArrowUpRightIcon className="size-4" />
             </Link>
